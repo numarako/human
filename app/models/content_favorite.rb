@@ -1,0 +1,2 @@
+class ContentFavorite < ApplicationRecord
+end
