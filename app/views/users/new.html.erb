@@ -1,2 +1,30 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<% provide(:title, 'Sign up') %>
+<h1>Sign up</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @user, local: true) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :age %>
+      <%= f.select :age, options_for_select([['年齢を選択してください', ''], ['15歳以下', '0'], ['16~19歳', '1'], ['20代', '2'], ['30代', '3'], ['40代', '4'], ['50代', '5'], ['60代', '6'], ['70歳以上', '7'], ['未回答', '8']]), {}, {class: 'form-control'} %>
+
+      <%= f.label :gender %>
+      <%= f.select :gender, options_for_select([['性別を選択してください', ''], ['男性', '0'], ['女性', '1'], ['その他', '3'], ['未回答', '4']]), {}, {class: 'form-control'} %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

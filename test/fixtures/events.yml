@@ -3,11 +3,11 @@
 one:
   user_id: 1
   status: 1
-  Reason: MyText
+  reason: MyText
   small_success: MyText
 
 two:
   user_id: 1
   status: 1
-  Reason: MyText
+  reason: MyText
   small_success: MyText
