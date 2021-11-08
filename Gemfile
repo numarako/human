@@ -26,8 +26,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-#custom.scssを利用するために追加
+# custom.scssを利用するために追加
 gem 'bootstrap-sass'
+# インスタンスをJSに渡すために追加
+gem 'gon'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
@@ -43,6 +45,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+    # JSのテスト用に追加
+   gem 'rspec-rails'
 end
 
 group :test do
@@ -57,6 +61,8 @@ group :test do
   gem 'minitest-reporters'
   gem 'guard'
   gem 'guard-minitest'
+  # JSのテスト用に追加
+   gem 'rspec-rails'
 end
 
 group :production do
