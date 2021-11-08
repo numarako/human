@@ -1,4 +1,3 @@
-
 <%= form_with(model: @user, local: true) do |f| %>
   <%= render 'shared/error_messages' %>
 
@@ -9,10 +8,11 @@
   <%= f.email_field :email, class: 'form-control' %>
 
   <%= f.label :age %>
-  <%= f.select :age, options_for_select([['年齢を選択してください', ''], ['15歳以下', '0'], ['16~19歳', '1'], ['20代', '2'], ['30代', '3'], ['40代', '4'], ['50代', '5'], ['60代', '6'], ['70歳以上', '7'], ['未回答', '8']]), {}, {class: 'form-control'} %>
+  <%= f.select :age, User.ages.keys.map {|k| [I18n.t("enums.user.age.#{k}"), k]}, {}, 
+  {class: 'form-control'}  %>
 
- <%= f.label :gender %>
-  <%= f.select :gender, options_for_select([['性別を選択してください', ''], ['男性', '0'], ['女性', '1'], ['その他', '2'], ['未回答', '3']]), {}, {class: 'form-control'} %>
+　<%= f.label :gender %>　
+  <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"), k]}, {}, {class: 'form-control'}  %>
 
   <%= f.label :password %>
   <%= f.password_field :password, class: 'form-control' %>

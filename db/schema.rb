@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2021_11_03_095230) do
   create_table "contents", force: :cascade do |t|
     t.integer "user_id"
     t.text "title"
+    t.integer "emotions"
+    t.integer "score"
     t.text "journaling"
     t.text "situation"
     t.text "compassion"

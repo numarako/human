@@ -30,6 +30,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap-sass'
 # インスタンスをJSに渡すために追加
 gem 'gon'
+# enumを日本語化
+gem 'rails-i18n'
+gem 'enum_help'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

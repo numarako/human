@@ -1,6 +1,6 @@
-nao:
-  name: nao
-  email: nao@example.com
+sample:
+  name: sampl
+  email: sample@example.com
   age: 8
   gender: 3
   password_digest: <%= User.digest('password') %>
