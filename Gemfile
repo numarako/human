@@ -33,6 +33,10 @@ gem 'gon'
 # enumを日本語化
 gem 'rails-i18n'
 gem 'enum_help'
+# 検索機能の実装
+gem 'ransack'
+# N+1問題の対応
+gem 'bullet'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

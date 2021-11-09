@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user,   only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -8,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to the App!"
-      redirect_to root_url
+      redirect_to root_path
     else
       render 'new'
     end

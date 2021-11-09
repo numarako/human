@@ -2,7 +2,9 @@ require 'test_helper'
 
 class ContentTest < ActiveSupport::TestCase
   def setup
-    @content = Content.new(title: "仕事でのミス", journaling: "辛い", situation: 1, compassion: "みんな失敗するよ！")
+    @user = users(:sample)
+    @content = @user.contents.build(title: "仕事でのミス", emotions: 1, score: 100,
+                            journaling: "辛い", situation: 1, compassion: "みんな失敗するよ！", release: 0)
   end
 
   test "should be valid" do
