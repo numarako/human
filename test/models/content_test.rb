@@ -16,8 +16,42 @@ class ContentTest < ActiveSupport::TestCase
     assert_not @content.valid?
   end
 
+  test "title should not be too long" do
+    @content.title = "a" * 51
+    assert_not @content.valid?
+  end
+
+  test "emotions should be present" do
+    @content.emotions = "     "
+    assert_not @content.valid?
+  end
+
+  test "score should be present" do
+    @content.score = "     "
+    assert_not @content.valid?
+  end
+
+  test "score should be 1 to 100" do
+    @content.score = 0
+    assert_not @content.valid?
+
+    @content.score = 1
+    assert @content.valid?
+
+    @content.score = 100
+    assert @content.valid?
+    
+    @content.score = 101
+    assert_not @content.valid?
+  end
+
   test "journaling should be present" do
     @content.journaling = "     "
+    assert_not @content.valid?
+  end
+
+  test "journaling should not be too long" do
+    @content.journaling = "a" * 651
     assert_not @content.valid?
   end
 
@@ -26,8 +60,18 @@ class ContentTest < ActiveSupport::TestCase
     assert_not @content.valid?
   end
 
+  test "situation should not be too long" do
+    @content.situation = "a" * 651
+    assert_not @content.valid?
+  end
+
   test "compassion should be present" do
     @content.compassion = "     "
+    assert_not @content.valid?
+  end
+
+  test "compassion should not be too long" do
+    @content.compassion = "a" * 651
     assert_not @content.valid?
   end
 end

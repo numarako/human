@@ -18,3 +18,16 @@ ja:
         woman: '女' # enumの値
         other: 'その他' # enumの値
         no_gender: '未回答' # enumの値
+    content: # モデル名(モデル名を重複して宣言するとエラー発生)
+      emotions: # カラム名
+        anger: '怒り' # enumの値
+        disgust: '嫌悪' # enumの値
+        sadness: '悲しみ' # enumの値
+        surprise: '驚き' # enumの値
+        fear: '恐れ' # enumの値
+  views:
+    pagination:
+      first: 最初
+      last: 最後
+      previous: 前
+      next: 次

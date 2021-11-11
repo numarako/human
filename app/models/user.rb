@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  before_save { self.email = email.downcase }
   has_many :contents, dependent: :destroy
   has_many :memos, dependent: :destroy
   validates :name,  presence: true, length: { maximum: 50 }
@@ -11,6 +10,7 @@ class User < ApplicationRecord
   validates :age, presence: true
   validates :gender, presence: true
   before_validation :processing_for_validates
+  before_save { self.email = email.downcase }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
@@ -24,11 +24,11 @@ class User < ApplicationRecord
   # age,genderに入力漏れがあった場合にエラーを発生させる
   def processing_for_validates
     if self.age == "default_age"
-      self.age = nil
+      self.age = ''
     end
 
     if self.gender == 'default_gender'
-      self.gender = nil
+      self.gender = ''
     end
   end
 
@@ -48,7 +48,7 @@ class User < ApplicationRecord
   enum gender: { 
     default_gender: '',
     man: 0,
-    woman: 1,
+    woman: 1, 
     other: 2,
     no_gender: 3
   }

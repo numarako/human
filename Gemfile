@@ -37,6 +37,10 @@ gem 'enum_help'
 gem 'ransack'
 # N+1問題の対応
 gem 'bullet'
+# テストデータ作成対応
+gem 'faker'
+# ページネーション追加対応
+gem 'kaminari'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

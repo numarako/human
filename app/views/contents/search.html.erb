@@ -1,0 +1,34 @@
+<% provide(:title, "検索結果") %>
+<h1>検索結果</h1>
+<% if @contents.any? %>
+  <div class= "table-responsive" >
+    <table class = "table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Emotions</th>
+          <th>Score</th>
+          <th>Age</th>
+          <th>Gender</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @contents.each_with_index do |content, i| %>
+          <tr>
+            <td><%= params[:page]?  i + 1 + (params[:page].to_i - 1)*10 : i + 1 %></td>
+            <td><%= content.title %></td>
+            <td><%= content.emotions_i18n %></td>
+            <td><%= content.score %></td>
+            <td><%= content.user.age_i18n %></td>
+            <td><%= content.user.gender_i18n %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= paginate @contents %>
+<% else %>
+  <h2><%= '検索結果がありません' %></h2>
+<% end %>
