@@ -6,7 +6,7 @@ one:
   journaling: MyText
   situation: MyText
   compassion: MyText
-  release: false
+  status: false
 
 two:
   user_id: 1
@@ -14,4 +14,4 @@ two:
   journaling: MyText
   situation: MyText
   compassion: MyText
-  release: false
+  status: false

@@ -8,7 +8,7 @@ class CreateContents < ActiveRecord::Migration[6.0]
       t.text :journaling
       t.text :situation
       t.text :compassion
-      t.integer :release
+      t.integer :status
 
       t.timestamps
     end

@@ -83,16 +83,16 @@ class ContentsController < ApplicationController
 
   private
   def search_params
-    params.require(:q).permit(:title_cont, :situation_cont, :user_age_eq, :user_gender_eq).merge(release_eq: 1)
+    params.require(:q).permit(:title_cont, :situation_cont, :user_age_eq, :user_gender_eq).merge(status_eq: 1)
   end
 
   def content_params
-    params.require(:content).permit(:title, :emotions, :score, :journaling, :situation, :compassion, :release)
+    params.require(:content).permit(:title, :emotions, :score, :journaling, :situation, :compassion, :status)
   end
 
   def check_release_status
     @content = Content.find(params[:id])
-    unless @content.release == "public"
+    unless @content.status == "public"
       flash[:danger] = "非公開投稿のため閲覧不可"
       redirect_to root_path
     end

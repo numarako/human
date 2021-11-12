@@ -1,29 +1,29 @@
 <div class="container">
   <%= form_with(model: @content, local: true) do |f| %>
 
-    <%= render 'shared/error_messages', object: f.object %>
-    
-    <%= f.label :title, 'タイトル' %>
-    <%= f.text_area :title, rows: "1", cols: "80", class: "form-control", placeholder: "投稿のタイトル", maxlength: 50	%>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.label :title, 'タイトル' %>
+  <%= f.text_area :title, rows: "1", cols: "80", class: "form-control", placeholder: "投稿のタイトル", maxlength: 50	%>
 
-    <%= f.label :emotions, '感情' %>
-    <%= f.select :emotions, Content.emotions.keys.map {|k| [I18n.t("enums.content.emotions.#{k}"), k]}, {}, {class: 'form-control'} %>
+  <%= f.label :emotions, '感情' %>
+  <%= f.select :emotions, Content.emotions.keys.map {|k| [I18n.t("enums.content.emotions.#{k}"), k]}, {}, {class: 'form-control'} %>
 
-    <%= f.label :score, 'スコア' %>
-    <%= f.number_field :score, rows: "1", cols: "10", class: "form-control", placeholder: "感情のスコア", min: 1, max: 100 %>
+  <%= f.label :score, 'スコア' %>
+  <%= f.number_field :score, rows: "1", cols: "10", class: "form-control", placeholder: "感情のスコア", min: 1, max: 100 %>
 
-    <%= f.label :journaling, 'ジャーナリング' %>
-    <%= f.text_area :journaling, rows: "8", cols: "80", class: "form-control", placeholder: "3分間集中して、心に浮かんだ感情をひたすら書き出してください", maxlength: 650 %>
+  <%= f.label :journaling, 'ジャーナリング' %>
+  <%= f.text_area :journaling, rows: "8", cols: "80", class: "form-control", placeholder: "3分間集中して、心に浮かんだ感情をひたすら書き出してください", maxlength: 650 %>
 
-    <%= f.label :situation, '状況整理' %>
-    <%= f.text_area :situation, rows: "8", cols: "80", class: "form-control", placeholder: "状況を客観的に説明してください", maxlength: 650 %>
+  <%= f.label :situation, '状況整理' %>
+  <%= f.text_area :situation, rows: "8", cols: "80", class: "form-control", placeholder: "状況を客観的に説明してください", maxlength: 650 %>
 
-    <%= f.label :compassion, 'セルフ・コンパッション' %>
-    <%= f.text_area :compassion, rows: "8", cols: "80", class: "form-control", placeholder: "親友や大切な人に接するつもりで、自分に対して優しい言葉を投げかけてください", maxlength: 650 %>
+  <%= f.label :compassion, 'セルフ・コンパッション' %>
+  <%= f.text_area :compassion, rows: "8", cols: "80", class: "form-control", placeholder: "親友や大切な人に接するつもりで、自分に対して優しい言葉を投げかけてください", maxlength: 650 %>
 
-    <%= f.label :release, '公開設定' %>
-    <%= f.select :release, Content.releases.keys.map {|k| [I18n.t("enums.content.release.#{k}"), k]}, {}, {class: 'form-control'} %>
+  <%= f.label :status, '公開設定' %>
+  <%= f.select :status, Content.statuses.keys.map {|k| [I18n.t("enums.content.status.#{k}"), k]}, {}, {class: 'form-control'} %>
 
-    <%= f.submit '登録する', class: "btn btn-primary" %>
+  <%= f.submit '登録する', class: "btn btn-primary" %>
   <% end %>
 </div>
