@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_11_03_095230) do
     t.text "journaling"
     t.text "situation"
     t.text "compassion"
-    t.boolean "release"
+    t.integer "release"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

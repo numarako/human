@@ -13,7 +13,7 @@ User.create!(name: "1", email: "user1@example.com", age: "under15", gender: "man
 user = User.find_by(name: "1")
 emotions = 1
 score = 80
-release = 0
+release = 1
 
 20.times do
   title = Faker::Lorem.sentence(word_count: 5)

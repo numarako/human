@@ -1,10 +1,45 @@
-<% provide(:title, "検索結果") %>
+<% provide(:title, "検索結果詳細") %>
 <h1>検索結果詳細</h1>
-<%= @content.title %>
-<%= @content.emotions_i18n %>
-<%= @content.score %>
-<%= @content.user.age_i18n %>
-<%= @content.user.gender_i18n %>
-<%= @content.journaling %>
-<%= @content.situation %>
-<%= @content.compassion %>
+<div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+      タイトル
+      </div>
+      <div class="panel-body">
+        <%= @content.title %>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+      ジャーナリング
+      </div>
+      <div class="panel-body">
+        <%= @content.journaling %>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+      状況整理
+      </div>
+      <div class="panel-body">
+        <%= @content.situation %>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+      セルフ・コンパッション
+      </div>
+      <div class="panel-body">
+        <%= @content.compassion %>
+      </div>
+    </div>
+    <div class="text-right">
+      <%= @content.emotions_i18n %><%= @content.score %>点
+      <%= @content.user.age_i18n %> <%= @content.user.gender_i18n %>
+    </div>
+    <div class="text-center">
+      <button type="button" name="button" class="btn btn-warning"><span class="glyphicon glyphicon-star" aria-hidden="true">お気に入り追加</button>
+      <button type="button" name="button" class="btn btn-default">戻る</button>
+    </div>
+  </div>
+  

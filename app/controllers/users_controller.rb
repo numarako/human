@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user,   only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -18,8 +18,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    gon.user_age = @user.age
-    gon.user_gender = @user.gender
   end
 
   def update
@@ -34,7 +32,6 @@ class UsersController < ApplicationController
 
   private 
     def user_params
-      params.require(:user).permit(:name, :email, :age, :gender, :password,
-                                    :password_confirmation )
+      params.require(:user).permit(:name, :email, :age, :gender, :situation, :password, :password_confirmation )
     end
 end

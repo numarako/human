@@ -1,23 +1,36 @@
 class ContentsController < ApplicationController
-  before_action :translation_for_search, only: [:search]
+  before_action :logged_in_user, only: [:create, :edit, :update]
+  before_action :check_params_for_search, only: [:search]
+  before_action :check_release_status, only: [:show]
   #before_action :set_content, only: %i[edit update destroy]
 
   def index
     @q = Content.ransack(params[:q])
-    @contents = @q.result(distinct: true)
+    @contents = @q.result.includes(:user)
     render 'static_pages/home'
   end
 
   def search
     @q = Content.search(search_params)
-    @contents = @q.result(distinct: true).page(params[:page])
+    @contents = @q.result.includes(:user).page(params[:page])
   end
 
   def show
     @content = Content.find(params[:id])
   end
 
-  def crate
+  def new
+    @content = Content.new
+  end
+
+  def create
+    @content = current_user.contents.build(content_params)
+    if @content.save
+      flash[:success] = "Contet created!"
+      redirect_to root_path
+    else
+      render 'new'  
+    end
   end
 
   def edit
@@ -28,10 +41,9 @@ class ContentsController < ApplicationController
 
   def destroy
   end
-
-
-  # 検索用にage,genderのパラメータを変換
-  def translation_for_search
+  
+  # age,genderのパラメータを検索用に変換
+  def check_params_for_search
     case params[:q][:user_age_eq]
     when "default_age" then
       params[:q][:user_age_eq] = ""
@@ -71,7 +83,19 @@ class ContentsController < ApplicationController
 
   private
   def search_params
-    params.require(:q).permit(:title_cont, :situation_cont, :user_age_eq, :user_gender_eq)
+    params.require(:q).permit(:title_cont, :situation_cont, :user_age_eq, :user_gender_eq).merge(release_eq: 1)
+  end
+
+  def content_params
+    params.require(:content).permit(:title, :emotions, :score, :journaling, :situation, :compassion, :release)
+  end
+
+  def check_release_status
+    @content = Content.find(params[:id])
+    unless @content.release == "public"
+      flash[:danger] = "非公開投稿のため閲覧不可"
+      redirect_to root_path
+    end
   end
 
   def set_content

@@ -4,7 +4,7 @@ class ContentTest < ActiveSupport::TestCase
   def setup
     @user = users(:sample)
     @content = @user.contents.build(title: "仕事でのミス", emotions: 1, score: 100,
-                            journaling: "辛い", situation: 1, compassion: "みんな失敗するよ！", release: 0)
+                            journaling: "辛い", situation: 1, compassion: "みんな失敗するよ！", release: 1)
   end
 
   test "should be valid" do
@@ -72,6 +72,11 @@ class ContentTest < ActiveSupport::TestCase
 
   test "compassion should not be too long" do
     @content.compassion = "a" * 651
+    assert_not @content.valid?
+  end
+
+  test "release should be present" do
+    @content.release = "     "
     assert_not @content.valid?
   end
 end

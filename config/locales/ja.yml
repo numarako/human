@@ -20,11 +20,16 @@ ja:
         no_gender: '未回答' # enumの値
     content: # モデル名(モデル名を重複して宣言するとエラー発生)
       emotions: # カラム名
+        default_emotions: '感情を選択してください' # enumの値
         anger: '怒り' # enumの値
         disgust: '嫌悪' # enumの値
         sadness: '悲しみ' # enumの値
         surprise: '驚き' # enumの値
         fear: '恐れ' # enumの値
+      release: # カラム名
+        default_release: '公開設定を選択してください' # enumの値
+        private: '非公開' # enumの値
+        public: '公開' # enumの値
   views:
     pagination:
       first: 最初
