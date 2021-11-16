@@ -4,7 +4,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test "should get home" do
     get root_url
     assert_response :success
-    assert_select "title", "Home"
+    assert_select "title", "ホーム"
   end
 
 end

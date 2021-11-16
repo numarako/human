@@ -1,8 +1,9 @@
 class ContentsController < ApplicationController
   before_action :logged_in_user, only: [:create, :edit, :update]
+  before_action :set_content, only: [:show, :edit, :update, :destroy]
+  before_action :correct_content, only: [:edit, :update, :destroy]
   before_action :check_params_for_search, only: [:search]
   before_action :check_release_status, only: [:show]
-  #before_action :set_content, only: %i[edit update destroy]
 
   def index
     @q = Content.ransack(params[:q])
@@ -16,7 +17,6 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @content = Content.find(params[:id])
   end
 
   def new
@@ -37,9 +37,18 @@ class ContentsController < ApplicationController
   end
 
   def update
+    if @content.update(content_params)
+      flash[:success] = "Content updated"
+      redirect_to index_contents_path(current_user)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @content.destroy
+    flash[:success] = "Content deleted"
+    redirect_to index_contents_path(current_user)
   end
   
   # age,genderのパラメータを検索用に変換
@@ -92,13 +101,13 @@ class ContentsController < ApplicationController
 
   def check_release_status
     @content = Content.find(params[:id])
-    unless @content.status == "public"
-      flash[:danger] = "非公開投稿のため閲覧不可"
-      redirect_to root_path
+    if @content.status == "private" # 非公開設定に限定
+      if logged_in? && @content.user_id == current_user.id
+        # 投稿者本人の場合は閲覧可能
+      else
+        flash[:danger] = "非公開投稿のため閲覧不可"
+            redirect_to root_path
+      end
     end
-  end
-
-  def set_content
-    @content = current_user.contents.find(params[:id])
   end
 end

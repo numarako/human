@@ -86,3 +86,13 @@ input {
   }
 }
 
+/* link_to */
+a:hover {
+  text-decoration: none;
+}
+
+/* table */
+/* Bootstrapの初期設定vertical-align:topを上書き */
+.td_vertical_align_middle.td_vertical_align_middle {
+  vertical-align: middle;
+}

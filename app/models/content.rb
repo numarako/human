@@ -1,5 +1,7 @@
 class Content < ApplicationRecord
+  # userにsをつけてはいけない
   belongs_to :user
+  has_many :content_bookmarks, dependent: :destroy
   validates :title, presence: true, length: { maximum: 50 }
   validates :emotions, presence: true
   validates :score, presence: true, numericality: { greater_than:0, less_than: 101 }
@@ -7,10 +9,10 @@ class Content < ApplicationRecord
   validates :situation, presence: true, length: { maximum: 650 }
   validates :compassion, presence: true, length: { maximum: 650 }
   validates :status, presence: true
-  before_validation :processing_for_validates
+  before_validation :processing_content_params
 
  # emotions,statusに入力漏れがあった場合にエラーを発生させる
- def processing_for_validates
+ def processing_content_params
   if self.emotions == "default_emotions"
     self.emotions = ''
   end

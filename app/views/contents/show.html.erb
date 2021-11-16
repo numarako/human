@@ -1,5 +1,5 @@
-<% provide(:title, "検索結果詳細") %>
-<h1>検索結果詳細</h1>
+<% provide(:title, "投稿内容詳細") %>
+<h1>投稿内容詳細</h1>
 <div class="container">
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -37,9 +37,11 @@
       <%= @content.emotions_i18n %><%= @content.score %>点
       <%= @content.user.age_i18n %> <%= @content.user.gender_i18n %>
     </div>
-    <div class="text-center">
-      <button type="button" name="button" class="btn btn-warning"><span class="glyphicon glyphicon-star" aria-hidden="true">お気に入り追加</button>
-      <button type="button" name="button" class="btn btn-default">戻る</button>
-    </div>
+    <% if logged_in? %>
+      <div class="text-center">
+        <%=link_to(bookmarks_path, method: :post) do %>
+        <button type="button" name="button" class="btn btn-warning"><span class="glyphicon glyphicon-star">お気に入り追加</button>
+        <%end%>
+      </div>
+    <% end %>
   </div>
-  

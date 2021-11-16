@@ -1,41 +1,4 @@
 <% provide(:title, "検索結果") %>
-<h1>検索結果</h1>
-<% if @contents.any? %>
-<div class="col-md-6 col-md-offset-3">
-  <div class= "table-responsive" >
-    <table class = "table table-hover">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>タイトル</th>
-          <th>感情</th>
-          <th>スコア</th>
-          <th>年齢</th>
-          <th>性別</th>
-        </tr>
-      </thead>
+<% provide(:text, "検索結果") %>
+<%= render 'search_index' %>
 
-      <tbody>
-        <% @contents.each_with_index do |content, i| %>
-          <tr
-           data-controller="href"
-           data-action="click->href#toHref"
-           data-href="<%= content_path(content) %>"
-           role="link">
-            <td><%= params[:page]?  i + 1 + (params[:page].to_i - 1)*10 : i + 1 %></td>
-            <td><%= content.title %></td>
-            <td><%= content.emotions_i18n %></td>
-            <td><%= content.score %></td>
-            <td><%= content.user.age_i18n %></td>
-            <td><%= content.user.gender_i18n %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <%= paginate @contents %>
-  </div>
-</div>
-<% else %>
-  <h2><%= '検索結果がありません' %></h2>
-<% end %>

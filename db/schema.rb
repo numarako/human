@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_03_095230) do
+ActiveRecord::Schema.define(version: 2021_11_15_060903) do
 
-  create_table "content_favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "content_id"
+  create_table "content_bookmarks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "content_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_content_bookmarks_on_content_id"
+    t.index ["user_id"], name: "index_content_bookmarks_on_user_id"
   end
 
   create_table "contents", force: :cascade do |t|
@@ -61,4 +63,6 @@ ActiveRecord::Schema.define(version: 2021_11_03_095230) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "content_bookmarks", "contents"
+  add_foreign_key "content_bookmarks", "users"
 end

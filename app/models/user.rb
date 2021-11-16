@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :contents, dependent: :destroy
   has_many :memos, dependent: :destroy
+  has_many :content_bookmarks, dependent: :destroy
   validates :name,  presence: true, length: { maximum: 50 }
   #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -9,7 +10,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :age, presence: true
   validates :gender, presence: true
-  before_validation :processing_for_validates
+  before_validation :processing_user_params
   before_save { self.email = email.downcase }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
@@ -22,7 +23,7 @@ class User < ApplicationRecord
   end 
 
   # age,genderに入力漏れがあった場合にエラーを発生させる
-  def processing_for_validates
+  def processing_user_params
     if self.age == "default_age"
       self.age = ''
     end

@@ -5,7 +5,8 @@
         <li><%= link_to "ホーム", root_path %></li>
         <% if logged_in? %>
         　<li><%= link_to "新規投稿", new_content_path %></li>
-        　<li><%= link_to "投稿管理", edit_content_path(current_user) %></li>
+        　<li><%= link_to "投稿管理", index_contents_path(current_user) %></li>
+          <li><%= link_to "お気に入り投稿", index_bookmarks_path(current_user) %></li>
           <li><%= link_to "プロフィール更新", edit_user_path(current_user) %></li>
           <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
         <% else %>

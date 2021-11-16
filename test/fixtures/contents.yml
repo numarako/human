@@ -1,17 +1,20 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
+sample:
   user_id: 1
-  title: MyText
-  journaling: MyText
-  situation: MyText
-  compassion: MyText
-  status: false
+  title: a
+  emotions: 1
+  score: 10
+  journaling: a
+  situation: a
+  compassion: a
+  status: 1
 
 two:
-  user_id: 1
+  user_id: 2
   title: MyText
+  emotions: MyText
+  score: MyText
   journaling: MyText
   situation: MyText
   compassion: MyText
-  status: false
+  status: MyText
