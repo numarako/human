@@ -1,6 +1,6 @@
 class ContentBookmarksController < ApplicationController
   before_action :logged_in_user
-  before_action :correct_content
+  # before_action :correct_content
   before_action :set_content
 
   # お気に入り登録
