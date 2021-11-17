@@ -96,3 +96,7 @@ a:hover {
 .td_vertical_align_middle.td_vertical_align_middle {
   vertical-align: middle;
 }
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}

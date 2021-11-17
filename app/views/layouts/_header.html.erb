@@ -4,11 +4,24 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "ホーム", root_path %></li>
         <% if logged_in? %>
-        　<li><%= link_to "新規投稿", new_content_path %></li>
-        　<li><%= link_to "投稿管理", index_contents_path(current_user) %></li>
-          <li><%= link_to "お気に入り投稿", index_bookmarks_path(current_user) %></li>
-          <li><%= link_to "プロフィール更新", edit_user_path(current_user) %></li>
-          <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">投稿 <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "新規投稿", new_content_path %></li>
+              <li><%= link_to "投稿管理", index_contents_path(current_user) %></li>
+              <li><%= link_to "お気に入り投稿", index_bookmarks_path(current_user) %></li>
+            </ul>
+          </li>
+          <li><%= link_to "自己メモ", index_bookmarks_path(current_user) %></li>
+          <li><%= link_to "ココロカレンダー", index_bookmarks_path(current_user) %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">アカウント <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "プロフィール更新", edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+            </ul>
+          </li>
         <% else %>
           <li><%= link_to "新規登録", signup_path %></li>
           <li><%= link_to "ログイン", login_path %></li>

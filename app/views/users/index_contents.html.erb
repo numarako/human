@@ -12,7 +12,6 @@
             <th>感情</th>
             <th>スコア</th>
             <th></th>
-            <th></th>
           </tr>
         </thead>
 
@@ -39,17 +38,14 @@
               data-action="mouseup->event#stopPropagation"
               class="td_vertical_align_middle"
               >
-                <%=link_to(edit_content_path(content),　class:"link_to_button") do %>
-                <button type="button" name="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></button>
-                <% end %>
-              <td
-              data-controller="event"
-              data-action="mouseup->event#stopPropagation"
-              class="td_vertical_align_middle"
-              >
-                <%=link_to(content_path(content), method: :delete, data: { confirm: "You sure?" }, class:"link_to_button") do %>
-                <button type="button" name="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></button>
-                <% end %>
+                <div class="btn-group">
+                  <%=link_to(edit_content_path(content),　class:"link_to_button") do %>
+                  <button type="button" name="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></button>
+                  <% end %>
+                  <%=link_to(content_path(content), method: :delete, data: { confirm: "You sure?" }, class:"link_to_button") do %>
+                  <button type="button" name="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></button>
+                  <% end %>
+                </div>
             　</td>
             </tr>
           <% end %> 

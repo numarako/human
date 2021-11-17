@@ -38,10 +38,10 @@
       <%= @content.user.age_i18n %> <%= @content.user.gender_i18n %>
     </div>
     <% if logged_in? %>
-      <div class="text-center">
-        <%=link_to(bookmarks_path, method: :post) do %>
-        <button type="button" name="button" class="btn btn-warning"><span class="glyphicon glyphicon-star">お気に入り追加</button>
-        <%end%>
-      </div>
+      <% if !ContentBookmark.exists?(user: current_user, content_id: @content.id) %>
+        <%= render 'content_bookmarks/bookmark_button' %>
+      <% else %>
+        <%= render 'content_bookmarks/not_bookmark_button' %>
+      <% end %>
     <% end %>
   </div>

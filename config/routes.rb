@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/users/:id/bookmarks', to: 'users#index_bookmarks', as: :index_bookmarks
   get '/search', to: 'contents#search'
   resources :contents
-    post '/contents/:id/bookmarks', to: 'content_bookmarks#create', as: :bookmarks
+    post '/contents/:id/bookmarks', to: 'content_bookmarks#create', as: :create_bookmarks
+    delete '/contents/:id/bookmarks', to: 'content_bookmarks#destroy', as: :delete_bookmarks
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
