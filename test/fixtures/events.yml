@@ -2,12 +2,14 @@
 
 one:
   user_id: 1
-  status: 1
+  mind: 1
   reason: MyText
   small_success: MyText
+  date: MyText
 
 two:
   user_id: 1
-  status: 1
+  mind: 1
   reason: MyText
   small_success: MyText
+  date: MyText

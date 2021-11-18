@@ -26,8 +26,8 @@ class ContentsController < ApplicationController
   def create
     @content = current_user.contents.build(content_params)
     if @content.save
-      flash[:success] = "Contet created!"
-      redirect_to root_path
+      flash[:success] = "新規投稿が完了しました!"
+      redirect_to index_contents_path(current_user)
     else
       render 'new'  
     end
@@ -38,7 +38,7 @@ class ContentsController < ApplicationController
 
   def update
     if @content.update(content_params)
-      flash[:success] = "Content updated"
+      flash[:success] = "投稿を更新しました！"
       redirect_to index_contents_path(current_user)
     else
       render 'edit'
@@ -47,7 +47,7 @@ class ContentsController < ApplicationController
 
   def destroy
     @content.destroy
-    flash[:success] = "Content deleted"
+    flash[:success] = "投稿を削除しました！"
     redirect_to index_contents_path(current_user)
   end
   

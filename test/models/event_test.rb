@@ -1,7 +1,37 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @user = users(:sample)
+    @event = Event.create(user_id: @user.id, mind: 1, reason: "test", small_success: "test", date: "2021-11-18")
+  end
+
+  test "should be valid" do
+    assert @event.valid?
+  end
+
+  test "user_id should be present" do
+    @event.user_id = "     "
+    assert_not @event.valid?
+  end
+
+  test "mind should be present" do
+    @event.mind = "     "
+    assert_not @event.valid?
+  end
+
+  test "reason should be present" do
+    @event.reason = "     "
+    assert_not @event.valid?
+  end
+
+  test "small_success should be present" do
+    @event.small_success = "     "
+    assert_not @event.valid?
+  end
+
+  test "date should be present" do
+    @event.date = "     "
+    assert_not @event.valid?
+  end
 end

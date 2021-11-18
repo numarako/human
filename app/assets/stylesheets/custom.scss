@@ -100,3 +100,20 @@ a:hover {
 .dropdown:hover>.dropdown-menu {
   display: block;
 }
+
+/* calendar */
+#calendar td.fc-day-today {
+  background-color: #FFFACD;
+}
+
+#calendar td.fc-day-sat {
+  background-color: #eaf4ff;
+}
+
+#calendar td.fc-day-sun {
+  background-color: #ffeaea;
+}
+
+#calendar td.holiday {
+  background-color: #FFF4E1;
+}
