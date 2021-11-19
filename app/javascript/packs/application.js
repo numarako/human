@@ -37,11 +37,24 @@ document.addEventListener('turbolinks:load', function () {
           buttonText: {
             today: '今日'
           },
+          // modal
+          selectable: true,
+          select: function (startDate, endDate) {
+            // alert('selected ' + startDate.format() + ' to ' + endDate.format());
+            $('#new_event').modal('show');
+          },
           // イベント予定設定
           events: getEventDates(holidaysData),
-          //  イベント予定毎の初期化設定
+
+          //  イベント予定毎の初期化設定(日付けとクラス付与)
           eventContent: function (arg) {
-            $('.fc-daygrid-day[data-date=' + arg.event.extendedProps.holiday + ']').addClass("holiday");
+            // 祝日のイベント
+            if (arg.event.extendedProps.holiday_date) {
+              $('.fc-daygrid-day[data-date=' + arg.event.extendedProps.holiday_date + ']').addClass("holiday");
+              // 個人のイベント
+            } else if (arg.event.extendedProps.diary_date) {
+              $('.fc-daygrid-day[data-date=' + arg.event.extendedProps.diary_date + ']').addClass("diary");
+            }
           },
         });
       calendar.render();
@@ -64,35 +77,53 @@ function getEventDates(holidaysData) {
       title: holidaysData[holidays[i]],
       // 指定日付
       start: holidays[i],
-      // カラー表示
-      color: '#8FBC8F',
-      // クリック時の遷移先
-      url: 'https://www.w2solution.co.jp/tech/2021/02/21/fullcalendar%E4%BD%BF%E3%81%84%E6%96%B9/',
       // クラス名
-      className: "holiday"
-      , holiday: holidays[i],
+      className: "holiday",
+      holiday_date: holidays[i],
+      color: 'transparent',
     };
     eventDatas.push(holiday);
   }
-  return eventDatas;
-
-  var notes = gon.event_array;
-  for (var i = 0; i < notes.length; i++) {
-    var note =
+  // 個人のイベント
+  var diaries = gon.event_array;
+  for (var i = 0; i < diaries.length; i++) {
+    // mindの値に応じてイベントの色を変更する
+    var color;
+    switch (diaries[i].mind) {
+      case "sunny":
+        // 鮮やかな赤みの橙色
+        color = '#FF6E00';
+        break;
+      case "clear":
+        // orange
+        color = '#FFA500';
+        break;
+      case "fine":
+        // 鮮やかな赤みの黄
+        color = '#FFDE00';
+        break;
+      case "cloudy":
+        // silver
+        color = '#C0C0C0';
+        break;
+      case "rainy":
+        // 鮮やかな青
+        color = '#00A2FF';
+        break;
+    }
+    // 個人の各イベントを設定
+    var diary =
     {
       // 指定日付セル内の表示内容
-      title: notes[i].mind,
+      title: diaries[i].mind,
       // 指定日付
-      start: notes[i].date,
-      // カラー表示
-      color: '#8FBC8F',
-      // クリック時の遷移先
-      url: 'https://www.w2solution.co.jp/tech/2021/02/21/fullcalendar%E4%BD%BF%E3%81%84%E6%96%B9/',
+      start: diaries[i].date,
       // クラス名
-      className: "note"
+      className: "diary",
+      diary_date: diaries[i].date,
+      color: color,
     };
-    eventDatas.push(note);
+    eventDatas.push(diary);
   }
   return eventDatas;
-
 }

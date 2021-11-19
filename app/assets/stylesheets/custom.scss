@@ -102,6 +102,10 @@ a:hover {
 }
 
 /* calendar */
+#calendar div.fc-event-title {
+  color:black;
+}
+
 #calendar td.fc-day-today {
   background-color: #FFFACD;
 }
@@ -116,4 +120,8 @@ a:hover {
 
 #calendar td.holiday {
   background-color: #FFF4E1;
+    a.holiday div.fc-event-title {
+    color:red;
+    }
 }
+
