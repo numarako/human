@@ -42,7 +42,7 @@
                   <%=link_to(edit_content_path(content),　class:"link_to_button") do %>
                   <button type="button" name="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></button>
                   <% end %>
-                  <%=link_to(content_path(content), method: :delete, data: { confirm: "You sure?" }, class:"link_to_button") do %>
+                  <%=link_to(content_path(content), method: :delete, data: { confirm: "本当に削除しますか?" }, class:"link_to_button") do %>
                   <button type="button" name="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></button>
                   <% end %>
                 </div>

@@ -4,6 +4,14 @@ class Event < ApplicationRecord
   validates :reason, presence: true
   validates :small_success, presence: true
   validates :date, presence: true
+  before_validation :processing_event_params
+
+  # mindに入力漏れがあった場合にエラーを発生させる
+  def processing_event_params
+    if self.mind == "default_mind"
+      self.mind = ''
+    end
+  end
 
   enum mind: { 
     default_mind: '',

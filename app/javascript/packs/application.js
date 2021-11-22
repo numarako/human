@@ -39,29 +39,18 @@ document.addEventListener('turbolinks:load', function () {
           },
           // modal
           selectable: true,
-          // select: function (startDate, endDate) {
-          // alert('selected ' + startDate.format() + ' to ' + endDate.format());
-          //  $('#new_event').modal('show');
-          //},
-
           dateClick: function (info) {
-            $('#mind').val("");
-            $('#date').val(info.dateStr);
-            $('#small_success').val("");
-            $('#reason').val("");
-            $('#diary_id').val("");
-            $('#new_event').modal();
-
+            var new_event_date = info.dateStr;
+            var current_url = location.href;
+            window.location.href = `${current_url}/new/?date=${new_event_date}`;
           },
 
           eventClick: function (info) {
-            //          $('#mind').val(info.event._def.extendedPropsdiary_mind);
-            //          $('#date').val(info.event._def.extendedProps.diary_date);
-            //          $('#small_success').val(info.event._def.extendedProps.diary_small_success);
-            //          $('#reason').val(info.event._def.extendedProps.diary_reason);
-            //          $('#diary_id').val(info.event._def.extendedProps.diary_id);
-            $('#change_event').modal();
+            var target_id = info.event._def.extendedProps.diary_id;
+            var current_url = location.href;
+            window.location.href = `${current_url}/edit/?target_id=${target_id}`;
           },
+
           // イベント予定設定
           events: getEventDates(holidaysData),
 
@@ -150,14 +139,6 @@ function getEventDates(holidaysData) {
 
       // idカラム
       diary_id: diaries[i].id,
-      // mindカラム
-      diary_mind: diaries[i].mind,
-      // reasonカラム
-      diary_reason: diaries[i].reason,
-      // small_successカラム
-      diary_small_success: diaries[i].small_success,
-      // dateカラム
-      diary_date: diaries[i].date,
     };
     eventDatas.push(diary);
   }
