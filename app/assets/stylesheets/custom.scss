@@ -120,8 +120,11 @@ a:hover {
 
 #calendar td.holiday {
   background-color: #FFF4E1;
-    a.holiday div.fc-event-title {
-    color:red;
-    }
+  a.holiday {
+      pointer-events: none; 
+      div.fc-event-title {
+        color:red;
+      }
+  }
 }
 

@@ -14,6 +14,6 @@ Rails.application.routes.draw do
     delete '/contents/:id/bookmarks', to: 'content_bookmarks#destroy', as: :delete_bookmarks
   resources :events, only: [:index]
     get '/users/:id/events', to: 'events#index', as: :index_events
-
+    post '/users/:id/events', to: 'events#create', as: :create_events
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

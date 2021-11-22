@@ -39,9 +39,28 @@ document.addEventListener('turbolinks:load', function () {
           },
           // modal
           selectable: true,
-          select: function (startDate, endDate) {
-            // alert('selected ' + startDate.format() + ' to ' + endDate.format());
-            $('#new_event').modal('show');
+          // select: function (startDate, endDate) {
+          // alert('selected ' + startDate.format() + ' to ' + endDate.format());
+          //  $('#new_event').modal('show');
+          //},
+
+          dateClick: function (info) {
+            $('#mind').val("");
+            $('#date').val(info.dateStr);
+            $('#small_success').val("");
+            $('#reason').val("");
+            $('#diary_id').val("");
+            $('#new_event').modal();
+
+          },
+
+          eventClick: function (info) {
+            //          $('#mind').val(info.event._def.extendedPropsdiary_mind);
+            //          $('#date').val(info.event._def.extendedProps.diary_date);
+            //          $('#small_success').val(info.event._def.extendedProps.diary_small_success);
+            //          $('#reason').val(info.event._def.extendedProps.diary_reason);
+            //          $('#diary_id').val(info.event._def.extendedProps.diary_id);
+            $('#change_event').modal();
           },
           // イベント予定設定
           events: getEventDates(holidaysData),
@@ -89,39 +108,56 @@ function getEventDates(holidaysData) {
   for (var i = 0; i < diaries.length; i++) {
     // mindの値に応じてイベントの色を変更する
     var color;
+    var title;
     switch (diaries[i].mind) {
       case "sunny":
         // 鮮やかな赤みの橙色
         color = '#FF6E00';
+        title = '🌞🌞🌞快晴'
         break;
       case "clear":
         // orange
         color = '#FFA500';
+        title = '🌞晴天'
         break;
       case "fine":
         // 鮮やかな赤みの黄
         color = '#FFDE00';
+        title = '🌤晴れ'
         break;
       case "cloudy":
         // silver
         color = '#C0C0C0';
+        title = '🌥曇り'
         break;
       case "rainy":
         // 鮮やかな青
         color = '#00A2FF';
+        title = '☔雨'
         break;
     }
     // 個人の各イベントを設定
     var diary =
     {
       // 指定日付セル内の表示内容
-      title: diaries[i].mind,
+      title: title,
       // 指定日付
       start: diaries[i].date,
       // クラス名
       className: "diary",
       diary_date: diaries[i].date,
       color: color,
+
+      // idカラム
+      diary_id: diaries[i].id,
+      // mindカラム
+      diary_mind: diaries[i].mind,
+      // reasonカラム
+      diary_reason: diaries[i].reason,
+      // small_successカラム
+      diary_small_success: diaries[i].small_success,
+      // dateカラム
+      diary_date: diaries[i].date,
     };
     eventDatas.push(diary);
   }

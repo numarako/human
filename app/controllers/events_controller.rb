@@ -6,4 +6,14 @@ class EventsController < ApplicationController
     # インスタンスをJSに渡す処理
     gon.event_array = @events.map{|event| event }
   end
+
+  def create
+    # 
+    @event = Event.create!(user_id: params[:id], mind: params[:mind], reason: params[:reason], small_success: params[:small_success], date: params[:date])
+  end
+ 
+  #private
+  #def event_params
+  #  params.require(:event).permit(:user_id, :mind, :reason, :small_success, :date)
+  #end
 end
