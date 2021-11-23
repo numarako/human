@@ -40,7 +40,7 @@ gem 'bullet'
 # テストデータ作成対応
 gem 'faker'
 # ページネーション追加対応
-gem 'kaminari'
+gem 'kaminari'  
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
@@ -56,8 +56,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-    # JSのテスト用に追加
-   gem 'rspec-rails'
+  # JSのテスト用に追加
+  gem 'rspec-rails'
+  # デバックツール
+  gem 'pry-byebug'
 end
 
 group :test do

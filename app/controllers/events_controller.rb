@@ -6,6 +6,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.where(user_id: params[:id])
+    binding.pry
     gon.event_array = @events.map{|event| event }
   end
 

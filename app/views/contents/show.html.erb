@@ -38,10 +38,12 @@
       <%= @content.user.age_i18n %> <%= @content.user.gender_i18n %>
     </div>
     <% if logged_in? %>
-      <% if !ContentBookmark.exists?(user: current_user, content_id: @content.id) %>
-        <%= render 'content_bookmarks/bookmark_button' %>
-      <% else %>
-        <%= render 'content_bookmarks/not_bookmark_button' %>
+     <% if @content.user_id != current_user.id %>
+        <% if !ContentBookmark.exists?(user: current_user, content_id: @content.id) %>
+          <%= render 'content_bookmarks/bookmark_button' %>
+        <% else %>
+          <%= render 'content_bookmarks/cancel_bookmark_button' %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
