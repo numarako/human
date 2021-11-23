@@ -46,4 +46,14 @@ module SessionsHelper
     def store_location
       session[:forwarding_url] = request.original_url if request.get?
     end
+
+    # URLのユーザIDと現在のユーザが一致しているか確認
+    def correct_user
+      @user = User.find_by(id: params[:id])
+      @current_user = User.find_by(id: session[:user_id])
+      if @user != @current_user
+        flash[:danger] = "権限がありません"
+        redirect_to root_url
+      end
+    end
 end

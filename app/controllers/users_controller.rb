@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the App!"
+      flash[:success] = "ようこそ!"
       redirect_to root_path
     else
       render 'new'
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "プロフィールを更新しました！"
       redirect_to root_path
     else
       render 'edit'
@@ -46,14 +46,5 @@ class UsersController < ApplicationController
   private 
     def user_params
       params.require(:user).permit(:name, :email, :age, :gender, :situation, :password, :password_confirmation )
-    end
-  
-    def correct_user
-      @user = User.find_by(id: params[:id])
-      @current_user = User.find_by(id: session[:user_id])
-      if @user != @current_user
-        flash[:danger] = "権限がありません"
-        redirect_to root_url
-      end
     end
 end

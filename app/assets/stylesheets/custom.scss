@@ -106,10 +106,6 @@ a:hover {
   color:black;
 }
 
-#calendar td.fc-day-today {
-  background-color: #FFFACD;
-}
-
 #calendar td.fc-day-sat {
   background-color: #eaf4ff;
 }
@@ -127,4 +123,11 @@ a:hover {
       }
   }
 }
+/* holidayよりも優先したいため、holidayの後ろに設定 */
+#calendar td.fc-day-today {
+  background-color: #FFFACD;
+}
 
+.tmp {
+  background-image: image-url('fish.png');
+}

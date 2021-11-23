@@ -41,14 +41,12 @@ document.addEventListener('turbolinks:load', function () {
           selectable: true,
           dateClick: function (info) {
             var new_event_date = info.dateStr;
-            var current_url = location.href;
-            window.location.href = `${current_url}/new/?date=${new_event_date}`;
+            window.location.href = `/events/new/?date=${new_event_date}`;
           },
 
           eventClick: function (info) {
             var target_id = info.event._def.extendedProps.diary_id;
-            var current_url = location.href;
-            window.location.href = `${current_url}/edit/?target_id=${target_id}`;
+            window.location.href = `/events/${target_id}/edit`;
           },
 
           // イベント予定設定

@@ -1,6 +1,6 @@
 class ContentsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :edit, :update]
   before_action :set_content, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:create] # actionの中でcorrect_userを指定
   before_action :correct_content, only: [:edit, :update, :destroy]
   before_action :check_params_for_search, only: [:search]
   before_action :check_release_status, only: [:show]
@@ -50,45 +50,6 @@ class ContentsController < ApplicationController
     flash[:success] = "投稿を削除しました！"
     redirect_to index_contents_path(current_user)
   end
-  
-  # age,genderのパラメータを検索用に変換
-  def check_params_for_search
-    case params[:q][:user_age_eq]
-    when "default_age" then
-      params[:q][:user_age_eq] = ""
-    when "under15" then
-      params[:q][:user_age_eq] = 0
-    when "late_teens" then
-      params[:q][:user_age_eq] = 1
-    when "twenties" then
-      params[:q][:user_age_eq] = 2
-    when "thirties" then
-      params[:q][:user_age_eq] = 3
-    when "forties" then
-      params[:q][:user_age_eq] = 4
-    when "fifties" then
-      params[:q][:user_age_eq] = 5
-    when "sixties" then
-      params[:q][:user_age_eq] = 6
-    when "over70" then
-      params[:q][:user_age_eq] = 7
-    when "no_age" then
-      params[:q][:user_age_eq] = 8
-    end
-
-    case params[:q][:user_gender_eq]
-    when "default_gender" then
-      params[:q][:user_gender_eq] = ""
-    when "man" then
-      params[:q][:user_gender_eq] = 0
-    when "woman" then
-      params[:q][:user_gender_eq] = 1
-    when "other" then
-      params[:q][:user_gender_eq] = 2
-    when "no_gender" then
-      params[:q][:user_gender_eq] = 3
-    end
-  end
 
   private
   def search_params
@@ -109,5 +70,44 @@ class ContentsController < ApplicationController
             redirect_to root_path
       end
     end
+  end
+
+  # age,genderのパラメータを検索用に変換
+  def check_params_for_search
+  case params[:q][:user_age_eq]
+  when "default_age" then
+    params[:q][:user_age_eq] = ""
+  when "under15" then
+    params[:q][:user_age_eq] = 0
+  when "late_teens" then
+    params[:q][:user_age_eq] = 1
+  when "twenties" then
+    params[:q][:user_age_eq] = 2
+  when "thirties" then
+    params[:q][:user_age_eq] = 3
+  when "forties" then
+    params[:q][:user_age_eq] = 4
+  when "fifties" then
+    params[:q][:user_age_eq] = 5
+  when "sixties" then
+    params[:q][:user_age_eq] = 6
+  when "over70" then
+    params[:q][:user_age_eq] = 7
+  when "no_age" then
+    params[:q][:user_age_eq] = 8
+  end
+
+  case params[:q][:user_gender_eq]
+  when "default_gender" then
+    params[:q][:user_gender_eq] = ""
+  when "man" then
+    params[:q][:user_gender_eq] = 0
+  when "woman" then
+    params[:q][:user_gender_eq] = 1
+  when "other" then
+    params[:q][:user_gender_eq] = 2
+  when "no_gender" then
+    params[:q][:user_gender_eq] = 3
+  end
   end
 end

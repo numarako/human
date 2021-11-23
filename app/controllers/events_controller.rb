@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:update, :destroy]
+  before_action :set_event, only: [:event, :update, :destroy]
+  before_action :correct_user, only: [:index]
+  before_action :logged_in_user, only: [:create] # actionの中でcorrect_userを指定
+  before_action :correct_event, only: [:edit, :update, :destroy]
 
   def index
     @events = Event.where(user_id: params[:id])
-    # mindカラムの値を日本語化
-    # @events.each{|event| event.mind = event.mind_i18n }
-    # インスタンスをJSに渡す処理
     gon.event_array = @events.map{|event| event }
   end
 
@@ -15,13 +15,12 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find_by(id: target_id_params[:target_id])
   end
 
   def create
     @event = current_user.events.build(event_params)
     if @event.save
-      flash[:success] = "カレンダー追加が完了しました!"
+      flash[:success] = "カレンダーを追加しました!"
       redirect_to index_events_path(current_user)
     else
       render 'new'
@@ -48,15 +47,19 @@ class EventsController < ApplicationController
     params.permit(:date)
   end
 
-  def target_id_params
-    params.permit(:target_id)
-  end
-
   def event_params
     params.require(:event).permit(:mind, :reason, :small_success, :date)
   end
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def correct_event
+    @event = current_user.events.find_by(id: params[:id])
+    if @event.nil?
+      flash[:danger] = "権限がありません"
+      redirect_to root_url
+    end
   end
 end
