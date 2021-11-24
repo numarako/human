@@ -41,7 +41,7 @@ class EventsController < ApplicationController
     flash[:success] = "カレンダーを削除しました！"
     redirect_to index_events_path(current_user)
   end
-
+  
   private
   def new_event_date_params
     params.permit(:date)

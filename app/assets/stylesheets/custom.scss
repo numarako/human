@@ -106,6 +106,30 @@ a:hover {
   color:black;
 }
 
+#calendar th.fc-col-header-cell {
+  background-color: #FFFFFF;
+}
+
+#calendar td.fc-day-mon {
+  background-color: #FFFFFF;
+}
+
+#calendar td.fc-day-tue {
+  background-color: #FFFFFF;
+}
+
+#calendar td.fc-day-wed {
+  background-color: #FFFFFF;
+}
+
+#calendar td.fc-day-thu {
+  background-color: #FFFFFF;
+}
+
+#calendar td.fc-day-fri {
+  background-color: #FFFFFF;
+}
+
 #calendar td.fc-day-sat {
   background-color: #eaf4ff;
 }
@@ -126,4 +150,8 @@ a:hover {
 /* holidayよりも優先したいため、holidayの後ろに設定 */
 #calendar td.fc-day-today {
   background-color: #FFFACD;
+}
+
+body {
+  background-image: image-url('yellow0084.png');
 }
