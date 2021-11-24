@@ -13,5 +13,8 @@
       <%= f.label :small_success, "小さな成功体験" %>
       <%= f.text_area :small_success, rows: "3", cols: "80", class: 'form-control' %>
 
+      <%= f.label :small_thanks, "小さな感謝" %>
+      <%= f.text_area :small_thanks, rows: "3", cols: "80", class: 'form-control' %>
+
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
     <% end %>

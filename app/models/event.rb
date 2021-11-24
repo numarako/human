@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   validates :mind, presence: true
   validates :reason, presence: true
   validates :small_success, presence: true
+  validates :small_thanks, presence: true
   validates :date, presence: true
   before_validation :processing_event_params
 

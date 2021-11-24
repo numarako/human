@@ -5,6 +5,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.integer :mind
       t.text :reason
       t.text :small_success
+      t.text :small_thanks
       t.date :date
 
       t.timestamps

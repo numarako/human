@@ -5,6 +5,7 @@ one:
   mind: 1
   reason: MyText
   small_success: MyText
+  small_thanks: MyText
   date: MyText
 
 two:
@@ -12,4 +13,5 @@ two:
   mind: 1
   reason: MyText
   small_success: MyText
+  small_thanks: MyText
   date: MyText

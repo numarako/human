@@ -6,7 +6,6 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.where(user_id: params[:id])
-    binding.pry
     gon.event_array = @events.map{|event| event }
   end
 
@@ -49,7 +48,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:mind, :reason, :small_success, :date)
+    params.require(:event).permit(:mind, :reason, :small_success, :small_thanks, :date)
   end
 
   def set_event

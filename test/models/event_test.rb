@@ -3,7 +3,7 @@ require 'test_helper'
 class EventTest < ActiveSupport::TestCase
   def setup
     @user = users(:sample)
-    @event = Event.create(user_id: @user.id, mind: 1, reason: "test", small_success: "test", date: "2021-11-18")
+    @event = Event.create(user_id: @user.id, mind: 1, reason: "test", small_success: "test", small_thanks: "test", date: "2021-11-18")
   end
 
   test "should be valid" do
@@ -27,6 +27,11 @@ class EventTest < ActiveSupport::TestCase
 
   test "small_success should be present" do
     @event.small_success = "     "
+    assert_not @event.valid?
+  end
+
+  test "small_thanks should be present" do
+    @event.small_thanks = "     "
     assert_not @event.valid?
   end
 

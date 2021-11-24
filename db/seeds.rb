@@ -26,8 +26,8 @@ end
 
 # イベント作成
 user2 = User.find_by(name: "nao")
-Event.create(user_id: user2.id, mind: 1, reason: "test", small_success: "test", date: "2021-11-23")
-Event.create(user_id: user2.id, mind: 2, reason: "test", small_success: "test", date: "2021-11-19")
-Event.create(user_id: user2.id, mind: 3, reason: "test", small_success: "test", date: "2021-11-20")
-Event.create(user_id: user2.id, mind: 4, reason: "test", small_success: "test", date: "2021-11-21")
-Event.create(user_id: user2.id, mind: 0, reason: "test", small_success: "test", date: "2021-11-22")
+Event.create(user_id: user2.id, mind: 1, reason: "test", small_success: "test", small_thanks: "test", date: "2021-11-23")
+Event.create(user_id: user2.id, mind: 2, reason: "test", small_success: "test", small_thanks: "test",date: "2021-11-19")
+Event.create(user_id: user2.id, mind: 3, reason: "test", small_success: "test", small_thanks: "test",date: "2021-11-20")
+Event.create(user_id: user2.id, mind: 4, reason: "test", small_success: "test", small_thanks: "test",date: "2021-11-21")
+Event.create(user_id: user2.id, mind: 0, reason: "test", small_success: "test", small_thanks: "test",date: "2021-11-22")

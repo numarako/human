@@ -20,7 +20,7 @@
     <%= f.text_area :situation, rows: "8", cols: "80", class: "form-control", placeholder: "状況を客観的に説明してください", maxlength: 650 %>
 
     <%= f.label :compassion, 'セルフ・コンパッション' %>
-    <%= f.text_area :compassion, rows: "8", cols: "80", class: "form-control", placeholder: "親友や大切な人に接するつもりで、自分に対して優しい言葉を投げかけてください", maxlength: 650 %>
+    <%= f.text_area :compassion, rows: "8", cols: "80", class: "form-control", placeholder: "親友や大切な人に接するつもりで、自分に対して慈悲の言葉を投げかけてください", maxlength: 650 %>
 
     <%= f.label :status, '公開設定' %>
     <%= f.select :status, Content.statuses.keys.map {|k| [I18n.t("enums.content.status.#{k}"), k]}, {}, {class: 'form-control'} %>

@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_11_15_060903) do
     t.integer "mind"
     t.text "reason"
     t.text "small_success"
+    t.text "small_thanks"
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
