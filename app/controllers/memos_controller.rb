@@ -16,7 +16,7 @@ class MemosController < ApplicationController
   end
 
   def create
-    @memo = current_user.memos.build(memo_params)
+    @memo = current_user.memos.create(memo_params)
     if @memo.save
       flash[:success] = "自己メモを追加しました!"
       redirect_to index_memos_path(current_user)
