@@ -25,13 +25,28 @@ class EventTest < ActiveSupport::TestCase
     assert_not @event.valid?
   end
 
+  test "reason should not be too long" do
+    @event.reason = "a" * 151
+    assert_not @event.valid?
+  end
+
   test "small_success should be present" do
     @event.small_success = "     "
     assert_not @event.valid?
   end
 
+  test "small_success should not be too long" do
+    @event.small_success = "a" * 151
+    assert_not @event.valid?
+  end
+
   test "small_thanks should be present" do
     @event.small_thanks = "     "
+    assert_not @event.valid?
+  end
+
+  test "small_thanks should not be too long" do
+    @event.small_thanks = "a" * 151
     assert_not @event.valid?
   end
 

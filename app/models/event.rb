@@ -1,9 +1,9 @@
 class Event < ApplicationRecord
   belongs_to :user
   validates :mind, presence: true
-  validates :reason, presence: true
-  validates :small_success, presence: true
-  validates :small_thanks, presence: true
+  validates :reason, presence: true, length: { maximum: 150 }
+  validates :small_success, presence: true, length: { maximum: 150 }
+  validates :small_thanks, presence: true, length: { maximum: 150 }
   validates :date, presence: true
   before_validation :processing_event_params
 

@@ -1,5 +1,5 @@
-        <div class="text-center" id="bookmark">
-          <%=link_to(create_bookmarks_path(@content), method: :post, remote: true) do %>
-          <button type="button" name="button" class="btn btn-warning"><span class="glyphicon glyphicon-star" >お気に入り登録</button>
-          <%end%>
-        </div>
+<div class="text-center" id="bookmark">
+  <%=link_to(create_bookmarks_path(@content), method: :post, remote: true) do %>
+    <button type="button" name="button" class="btn btn-warning"><span class="glyphicon glyphicon-star" >お気に入りに登録する</button>
+  <%end%>
+</div>

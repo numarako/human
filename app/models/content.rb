@@ -5,9 +5,9 @@ class Content < ApplicationRecord
   validates :title, presence: true, length: { maximum: 50 }
   validates :emotions, presence: true
   validates :score, presence: true, numericality: { greater_than:0, less_than: 101 }
-  validates :journaling, presence: true, length: { maximum: 650 }
-  validates :situation, presence: true, length: { maximum: 650 }
-  validates :compassion, presence: true, length: { maximum: 650 }
+  validates :journaling, presence: true, length: { maximum: 500 }
+  validates :situation, presence: true, length: { maximum: 500 }
+  validates :compassion, presence: true, length: { maximum: 500 }
   validates :status, presence: true
   before_validation :processing_content_params
 

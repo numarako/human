@@ -38,6 +38,13 @@ ja:
         fine: '晴れ' # enumの値
         cloudy: '曇り' # enumの値
         rainy: '雨' # enumの値
+    memo: # モデル名
+      category: # カラム名
+        default_category: '自己メモの種類を選択してください' # enumの値
+        strength: '強み' # enumの値
+        weakness: '弱み' # enumの値
+        thinking_habits: '思考の癖' # enumの値
+        behavioral_habits: '行動の癖' # enumの値
   views:
     pagination:
       first: 最初

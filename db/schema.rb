@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2021_11_15_060903) do
 
   create_table "memos", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "type"
-    t.text "tytle"
+    t.integer "category"
+    t.text "title"
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

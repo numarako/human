@@ -51,7 +51,7 @@ class ContentTest < ActiveSupport::TestCase
   end
 
   test "journaling should not be too long" do
-    @content.journaling = "a" * 651
+    @content.journaling = "a" * 501
     assert_not @content.valid?
   end
 
@@ -61,7 +61,7 @@ class ContentTest < ActiveSupport::TestCase
   end
 
   test "situation should not be too long" do
-    @content.situation = "a" * 651
+    @content.situation = "a" * 501
     assert_not @content.valid?
   end
 
@@ -71,7 +71,7 @@ class ContentTest < ActiveSupport::TestCase
   end
 
   test "compassion should not be too long" do
-    @content.compassion = "a" * 651
+    @content.compassion = "a" * 501
     assert_not @content.valid?
   end
 

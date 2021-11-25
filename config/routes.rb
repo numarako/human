@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :contents
     post '/contents/:id/bookmarks', to: 'content_bookmarks#create', as: :create_bookmarks
     delete '/contents/:id/bookmarks', to: 'content_bookmarks#destroy', as: :delete_bookmarks
-  resources :events
+  resources :events, :except => [:show, :index]
     get '/users/:id/events', to: 'events#index', as: :index_events
+  resources :memos, :except => [:show, :index]  
+  get '/users/:id/memos', to: 'memos#index', as: :index_memos
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:event, :update, :destroy]
+  before_action :set_event, only: [:edit, :update, :destroy]
   before_action :correct_user, only: [:index]
   before_action :logged_in_user, only: [:create] # actionの中でcorrect_userを指定
   before_action :correct_event, only: [:edit, :update, :destroy]
@@ -43,23 +43,23 @@ class EventsController < ApplicationController
   end
   
   private
-  def new_event_date_params
-    params.permit(:date)
-  end
-
-  def event_params
-    params.require(:event).permit(:mind, :reason, :small_success, :small_thanks, :date)
-  end
-
-  def set_event
-    @event = Event.find(params[:id])
-  end
-
-  def correct_event
-    @event = current_user.events.find_by(id: params[:id])
-    if @event.nil?
-      flash[:danger] = "権限がありません"
-      redirect_to root_url
+    def new_event_date_params
+      params.permit(:date)
     end
-  end
+
+    def event_params
+      params.require(:event).permit(:mind, :reason, :small_success, :small_thanks, :date)
+    end
+
+    def set_event
+      @event = Event.find(params[:id])
+    end
+
+    def correct_event
+      @event = current_user.events.find_by(id: params[:id])
+      if @event.nil?
+        flash[:danger] = "権限がありません"
+        redirect_to root_url
+      end
+    end
 end
