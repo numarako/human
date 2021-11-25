@@ -3,6 +3,7 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "ホーム", root_path %></li>
+         <li><%= link_to "サイトについて", about_path %></li>
         <% if logged_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle">投稿 <b class="caret"></b></a>
