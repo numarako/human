@@ -1,6 +1,10 @@
 <% provide(:title, "投稿内容詳細") %>
 <h1>投稿内容詳細</h1>
 <div class="container">
+    <div class="text-left">
+      <%= @content.emotions_i18n %><%= @content.score %>点
+      <%= @content.user.age_i18n %> <%= @content.user.gender_i18n %>
+    </div>
     <div class="panel panel-primary">
       <div class="panel-heading">
       タイトル
@@ -34,8 +38,7 @@
       </div>
     </div>
     <div class="text-right">
-      <%= @content.emotions_i18n %><%= @content.score %>点
-      <%= @content.user.age_i18n %> <%= @content.user.gender_i18n %>
+      最終更新日:<%= l @content.user.updated_at %>
     </div>
     <% if logged_in? %>
      <% if @content.user_id != current_user.id %>

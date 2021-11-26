@@ -5,7 +5,7 @@ class MemosController < ApplicationController
   before_action :correct_memo, only: [:edit, :update, :destroy]
 
   def index
-    @memos = Memo.where(user_id: params[:id]).page(params[:page])
+    @memos = Memo.where(user_id: params[:id]).order(updated_at: "DESC").page(params[:page])
   end
 
   def new

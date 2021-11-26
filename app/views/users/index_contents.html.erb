@@ -11,6 +11,8 @@
             <th>タイトル</th>
             <th>感情</th>
             <th>スコア</th>
+            <th>作成日</th>
+            <th>最終更新日</th>
             <th></th>
           </tr>
         </thead>
@@ -33,6 +35,8 @@
               <td class="td_vertical_align_middle"><%= content.title %></td>
               <td class="td_vertical_align_middle"><%= content.emotions_i18n %></td>
               <td class="td_vertical_align_middle"><%= content.score %></td>
+              <td class="td_vertical_align_middle"><%= l content.created_at %></td>
+              <td class="td_vertical_align_middle"><%= l content.updated_at %></td>
               <td
               data-controller="event"
               data-action="mouseup->event#stopPropagation"

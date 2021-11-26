@@ -4,7 +4,7 @@
       <%= f.label :date, "日付" %>
       <%= f.text_field :date, class: 'form-control' %>
 
-      <%= f.label :mind, "ココロ" %>
+      <%= f.label :mind, "ココロ模様" %>
       <%= f.select :mind, Event.minds.keys.map {|k| [I18n.t("enums.event.mind.#{k}"), k]}, {}, {class: 'form-control'}  %>
 
       <%= f.label :reason, "理由" %>

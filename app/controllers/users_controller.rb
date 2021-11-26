@@ -33,13 +33,13 @@ class UsersController < ApplicationController
 
   def index_contents
     @user = User.find(params[:id])
-    @contents = @user.contents.page(params[:page])
+    @contents = @user.contents.order(updated_at: "DESC").page(params[:page])
   end
 
   def index_bookmarks
     @user = User.find(params[:id])
     @content_bookmatrks = @user.content_bookmarks
-    bookmarks_array = @content_bookmatrks.map{|content_bookmark| content_bookmark.content }
+    bookmarks_array = @content_bookmatrks.map{|content_bookmark| content_bookmark.content }.sort! {|x, y| y["updated_at"] <=> x["updated_at"] }
     @contents =  Kaminari.paginate_array(bookmarks_array).page(params[:page])
   end 
   

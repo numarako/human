@@ -13,7 +13,7 @@ class ContentsController < ApplicationController
 
   def search
     @q = Content.search(search_params)
-    @contents = @q.result.includes(:user).page(params[:page])
+    @contents = @q.result.includes(:user).order(updated_at: "DESC").page(params[:page])
   end
 
   def show

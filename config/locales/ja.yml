@@ -32,7 +32,7 @@ ja:
         public: '公開' # enumの値
     event: # モデル名
       mind: # カラム名
-        default_mind: '本日のココロを選択してください' # enumの値
+        default_mind: '本日のココロ模様を選択してください' # enumの値
         sunny: '快晴' # enumの値
         clear: '晴天' # enumの値
         fine: '晴れ' # enumの値
@@ -51,3 +51,6 @@ ja:
       last: 最後
       previous: 前
       next: 次
+  time:
+    formats:
+      default: "%Y/%m/%d"

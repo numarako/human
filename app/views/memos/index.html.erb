@@ -9,6 +9,8 @@
             <th>#</th>
             <th>自己メモの種類</th>
             <th>タイトル</th>
+            <th>作成日</th>
+            <th>最終更新日</th>
             <th></th>
           </tr>
         </thead>
@@ -19,6 +21,8 @@
               <td class="td_vertical_align_middle"><%= params[:page]?  i + 1 + (params[:page].to_i - 1)*10 : i + 1 %></td>
               <td class="td_vertical_align_middle"><%= memo.category_i18n %></td>
               <td class="td_vertical_align_middle"><%= memo.title %></td>
+              <td class="td_vertical_align_middle"><%= l memo.created_at %></td>
+              <td class="td_vertical_align_middle"><%= l memo.updated_at %></td>
               <td>
                 <div class="btn-group">
                   <%=link_to(edit_memo_path(memo),　class:"link_to_button") do %>
