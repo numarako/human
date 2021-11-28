@@ -4,8 +4,8 @@
     <% if @comments.any? %>
       <% @comments.each_with_index do |comment,i| %>
         <div class = "comment-part">
-          <p class = "comment-phrase<%= i+1%>"><%= comment.phrase_i18n %></p>
-          <p class = "comment-date<%= i+1%>"><%= l comment.created_at %></p>
+          <p class = "comment-phrase<%= i+1%>" id = "comment-phrase<%= i+1%>"><%= comment.phrase_i18n %></p>
+          <p class = "comment-date<%= i+1%>" id = "comment-date<%= i+1%>"><%= l comment.created_at %></p>
           <input type="hidden" id="comment_user" name="comment_user" value=<%= comment.user_id %>>
         </div>
       <% end %>
