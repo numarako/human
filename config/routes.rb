@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     get '/users/:id/events', to: 'events#index', as: :index_events
   resources :memos, :except => [:show, :index]  
   get '/users/:id/memos', to: 'memos#index', as: :index_memos
+  resources :comments
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

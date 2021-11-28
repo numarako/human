@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h2>コメント</h2>
+    <% if @comments.any? %>
+      <% @comments.each_with_index do |comment,i| %>
+        <div class = "comment-part">
+          <p class = "comment-phrase<%= i+1%>"><%= comment.phrase_i18n %></p>
+          <p class = "comment-date<%= i+1%>"><%= l comment.created_at %></p>
+          <input type="hidden" id="comment_user" name="comment_user" value=<%= comment.user_id %>>
+        </div>
+      <% end %>
+    <%= javascript_pack_tag 'comment' %>
+    <% else %>
+      <p class = "comment-none">コメントはありません</p>
+    <% end %>
+    <%= form_with(model: @comment, method: :post, local: true) do |f| %>  
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.hidden_field :content_id, value: @content.id, class: 'form-control' %>
+
+      <%= f.select :phrase, Comment.phrases.keys.map {|k| [I18n.t("enums.comment.phrase.#{k}"), k]}, {}, {class: 'form-control'}  %>
+
+      <%= f.submit 'コメントする', class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

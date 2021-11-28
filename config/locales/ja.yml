@@ -45,6 +45,19 @@ ja:
         weakness: '弱み' # enumの値
         thinking_habits: '思考の癖' # enumの値
         behavioral_habits: '行動の癖' # enumの値
+    comment: # モデル名
+      phrase: # カラム名
+        default_phrase: 'コメントを選択してください' # enumの値
+        anger: '怒るのも無理はないよね' # enumの値
+        disgust: 'うんざりだよね' # enumの値
+        sadness: '悲しいよね' # enumの値
+        surprise: 'びっくりだよね' # enumの値
+        fear: '不安だよね' # enumの値
+        hard: '大変だったね' # enumの値
+        happy: '共感してもらえて嬉しいよ' # enumの値
+        cheered: '元気をもらったよ' # enumの値
+        support: '応援してるよ' # enumの値
+        thankful: '素敵な言葉をありがとう' # enumの値
   views:
     pagination:
       first: 最初
@@ -53,4 +66,4 @@ ja:
       next: 次
   time:
     formats:
-      default: "%Y/%m/%d"
+      default: "%Y/%m/%d %H:%M"

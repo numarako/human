@@ -37,12 +37,11 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.5em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
 }
 
 p {
@@ -158,4 +157,18 @@ body {
 
 div.tmp{
   background-image:none;
+}
+
+/* comment */
+p.comment-none{
+  text-align: center; 
+}
+
+p[class^="comment-phrase"]{
+  text-align: left;
+  float: left;  
+}
+
+p[class^=comment-date]{
+  text-align: right;
 }

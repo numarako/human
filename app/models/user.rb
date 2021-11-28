@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :memos, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :content_bookmarks, dependent: :destroy
+  has_many :comments, dependent: :destroy
   validates :name,  presence: true, length: { maximum: 50 }
   #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
