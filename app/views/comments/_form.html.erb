@@ -11,7 +11,7 @@
       <% end %>
     <%= javascript_pack_tag 'comment' %>
     <% else %>
-      <p class = "comment-none">コメントはありません</p>
+      <p class = "comment-none">まだコメントはありません</p>
     <% end %>
     <%= form_with(model: @comment, method: :post, local: true) do |f| %>  
       <%= render 'shared/error_messages', object: f.object %>
@@ -20,7 +20,7 @@
 
       <%= f.select :phrase, Comment.phrases.keys.map {|k| [I18n.t("enums.comment.phrase.#{k}"), k]}, {}, {class: 'form-control'}  %>
 
-      <%= f.submit 'コメントする', class: "btn btn-primary" %>
+      <%= f.submit 'コメントする', class: "btn btn-success" %>
     <% end %>
   </div>
 </div>

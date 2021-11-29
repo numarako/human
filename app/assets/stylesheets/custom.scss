@@ -5,6 +5,7 @@
 
 body {
   padding-top: 60px;
+  color: white;
 }
 
 section {
@@ -86,8 +87,17 @@ input {
 }
 
 /* link_to */
+a {
+  color:blue;
+}
+
 a:hover {
   text-decoration: none;
+}
+
+/* content show action */
+div.panel-body {
+  color:black;
 }
 
 /* table */
@@ -100,7 +110,15 @@ a:hover {
   display: block;
 }
 
+table.table-hover tbody tr:hover {
+  color: black;
+}
+
 /* calendar */
+.fc-daygrid-day-number{
+  color:black;
+}
+
 #calendar div.fc-event-title {
   color:black;
 }
@@ -137,6 +155,36 @@ a:hover {
   background-color: #ffeaea;
 }
 
+
+th.fc-day-mon .fc-col-header-cell-cushion {
+  color: black;
+}
+
+th.fc-day-tue .fc-col-header-cell-cushion {
+  color: black;
+}
+
+th.fc-day-wed .fc-col-header-cell-cushion {
+  color: black;
+}
+
+
+th.fc-day-thu .fc-col-header-cell-cushion {
+  color: black;
+}
+
+th.fc-day-fri .fc-col-header-cell-cushion {
+  color: black;
+}
+
+th.fc-day-sat .fc-col-header-cell-cushion {
+  color: blue;
+}
+
+th.fc-day-sun .fc-col-header-cell-cushion{
+  color: red;
+}
+
 #calendar td.holiday {
   background-color: #FFF4E1;
   a.holiday {
@@ -149,14 +197,6 @@ a:hover {
 /* holidayよりも優先したいため、holidayの後ろに設定 */
 #calendar td.fc-day-today {
   background-color: #FFFACD;
-}
-
-body {
-  background-image: image-url('yellow.png');
-}
-
-div.tmp{
-  background-image:none;
 }
 
 /* comment */

@@ -30,7 +30,7 @@
               <% else %>
                 <% background="bg-danger" %>
               <% end %>
-              <td class="td_vertical_align_middle"><span class="<%= background %> center-block text-center"><%= content.status_i18n %></td>
+              <td class="td_vertical_align_middle"><span class="<%= background %> center-block text-center" style="color:black;"><%= content.status_i18n %></td>
               <td class="td_vertical_align_middle"><%= params[:page]?  i + 1 + (params[:page].to_i - 1)*10 : i + 1 %></td>
               <td class="td_vertical_align_middle"><%= content.title %></td>
               <td class="td_vertical_align_middle"><%= content.emotions_i18n %></td>

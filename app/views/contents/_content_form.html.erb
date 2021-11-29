@@ -25,7 +25,7 @@
     <%= f.label :status, '公開設定' %>
     <%= f.select :status, Content.statuses.keys.map {|k| [I18n.t("enums.content.status.#{k}"), k]}, {}, {class: 'form-control'} %>
 
-    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <%= f.submit yield(:button_text), class: "btn btn-success" %>
     <% end %>
   </div>  
 </div>
