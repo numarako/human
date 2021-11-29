@@ -2,14 +2,17 @@
   <div class="col-sm-6 col-sm-offset-3">
     <h2>コメント</h2>
     <% if @comments.any? %>
+      <% content_user_id = @content.user_id %>
       <% @comments.each_with_index do |comment,i| %>
-        <div class = "comment-part">
-          <p class = "comment-phrase<%= i+1%>" id = "comment-phrase<%= i+1%>"><%= comment.phrase_i18n %></p>
-          <p class = "comment-date<%= i+1%>" id = "comment-date<%= i+1%>"><%= l comment.created_at %></p>
-          <input type="hidden" id="comment_user" name="comment_user" value=<%= comment.user_id %>>
-        </div>
+        <p id = "comment-phrase"><%= comment.phrase_i18n %></p>
+        <% if comment.user.id == current_user.id %>
+          <p id = "comment-data">あなたのコメント <%= l comment.created_at %></p>
+        <% elsif comment.user.id == content_user_id %>
+          <p id = "comment-data">投稿者のコメント <%= l comment.created_at %></p>
+        <% else %>
+          <p id = "comment-data"><%= comment.user.age_i18n %> <%= comment.user.gender_i18n %>のコメント <%= l comment.created_at %></p>
+        <% end %>
       <% end %>
-    <%= javascript_pack_tag 'comment' %>
     <% else %>
       <p class = "comment-none">まだコメントはありません</p>
     <% end %>

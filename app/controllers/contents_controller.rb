@@ -19,7 +19,7 @@ class ContentsController < ApplicationController
   def show
     @comments = @content.comments  #投稿詳細に関連付けてあるコメントを全取得
     @comment = Comment.new #投稿詳細画面でコメントの投稿を行うので、formのパラメータ用にCommentオブジェクトを取得
-
+    @content = Content.find_by(id: params[:id])
     if logged_in?
     gon.current_user = current_user.id #jsで現在のユーザに紐つくコメントの色を変更するための対応
     gon.content_user = @content.user.id #jsで投稿者に紐つくコメントの色を変更するための対応

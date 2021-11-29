@@ -204,11 +204,12 @@ p.comment-none{
   text-align: center; 
 }
 
-p[class^="comment-phrase"]{
+p[id^="comment-phrase"]{
   text-align: left;
   float: left;  
 }
 
-p[class^=comment-date]{
+p[id^=comment-data]{
   text-align: right;
+  opacity: 0.5;
 }

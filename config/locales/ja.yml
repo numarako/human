@@ -14,8 +14,8 @@ ja:
         no_age: '未回答' # enumの値
       gender: # カラム名
         default_gender: '性別を選択してください' # enumの値
-        man: '男' # enumの値
-        woman: '女' # enumの値
+        man: '男性' # enumの値
+        woman: '女性' # enumの値
         other: 'その他' # enumの値
         no_gender: '未回答' # enumの値
     content: # モデル名
