@@ -1,0 +1,12 @@
+<% if notification.content.user_id == notification.visited_id %>
+  <% # 自分が投稿者で、投稿者以外のコメントにより通知を受けるケース %>
+  <%= link_to "あなたの投稿", content_path(notification.content_id) %>にコメントが追加されました。
+<% elsif notification.content.user_id == notification.visitor_id %>
+  <% # 自分が投稿者ではないが、投稿者のコメントにより通知を受けるケース %>
+  <%= link_to "あなたがコメントした投稿", content_path(notification.content_id) %>に投稿者がコメントしました。
+<% else %> 
+  <% # visitor_idとvisited_idが一致するケースは除外済みのため発生しない %>
+<% end %>
+
+
+

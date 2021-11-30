@@ -200,16 +200,26 @@ th.fc-day-sun .fc-col-header-cell-cushion{
 }
 
 /* comment */
+p.under-line {
+  text-decoration : underline;
+}
+
+p.under-line_double {
+  text-decoration : underline;
+  text-decoration-style: double;
+}
+
 p.comment-none{
   text-align: center; 
 }
 
-p[id^="comment-phrase"]{
+p.comment-phrase{
   text-align: left;
-  float: left;  
+  float: left;
+  
 }
 
-p[id^=comment-data]{
+p.comment-data{
   text-align: right;
   opacity: 0.5;
 }

@@ -15,7 +15,7 @@
     </div>
     <div class="panel panel-info">
       <div class="panel-heading">
-      ジャーナリング
+      ジャーナリング(3分間集中して、心に浮かんだ感情をひたすら書き出したもの)
       </div>
       <div class="panel-body">
         <%= @content.journaling %>
@@ -31,7 +31,7 @@
     </div>
     <div class="panel panel-info">
       <div class="panel-heading">
-      セルフ・コンパッション
+      セルフ・コンパッション(自分に対する慈悲の言葉)
       </div>
       <div class="panel-body">
         <%= @content.compassion %>
@@ -41,14 +41,18 @@
       最終更新日:<%= l @content.updated_at %>
     </div>
     <% if logged_in? %>
-     <% if @content.user_id != current_user.id %>
+      <% # お気に入りボタンの表示はログインユーザに限定 %>
+      <% if @content.user_id != current_user.id %>
+        <% # お気に入りボタンの表示は投稿者以外に限定  %>
         <% if !ContentBookmark.exists?(user: current_user, content_id: @content.id) %>
+          <% # お気に入りに登録していない場合は登録ボタンを表示  %>
           <%= render 'content_bookmarks/bookmark_button' %>
         <% else %>
+          <% # お気に入りに登録している場合は登録解除ボタンを表示  %>
           <%= render 'content_bookmarks/cancel_bookmark_button' %>
         <% end %>
-     <% end %>
+      <% end %>
+      <br>
+      <%= render '/comments/form' %>
     <% end %>
-    <br>
-    <%= render '/comments/form' %>
 </div>

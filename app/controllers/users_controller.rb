@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :index_contents, :index_bookmarks]
-  before_action :correct_user,   only: [:edit, :update, :index_contents, :index_bookmarks]
+  before_action :logged_in_user, only: [:edit, :update]
+  before_action :correct_user,   only: [:edit, :update]
 
   def new
     @user = User.new
@@ -30,18 +30,6 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-
-  def index_contents
-    @user = User.find(params[:id])
-    @contents = @user.contents.order(updated_at: "DESC").page(params[:page])
-  end
-
-  def index_bookmarks
-    @user = User.find(params[:id])
-    @content_bookmatrks = @user.content_bookmarks
-    bookmarks_array = @content_bookmatrks.map{|content_bookmark| content_bookmark.content }.sort! {|x, y| y["updated_at"] <=> x["updated_at"] }
-    @contents =  Kaminari.paginate_array(bookmarks_array).page(params[:page])
-  end 
   
   private 
     def user_params

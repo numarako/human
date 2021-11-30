@@ -1,18 +1,18 @@
-    <%= form_with(model: @memo, url: yield(:url), local: true) do |f| %>  
-      <%= render 'shared/error_messages', object: f.object %>
+<%= form_with(model: @memo, url: yield(:url), local: true) do |f| %>  
+  <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :category, "自己メモの種類" %>
-      <%= f.select :category, Memo.categories.keys.map {|k| [I18n.t("enums.memo.category.#{k}"), k]}, {}, {class: 'form-control'}  %>
+  <%= f.label :category, "自己メモの種類" %>
+  <%= f.select :category, Memo.categories.keys.map {|k| [I18n.t("enums.memo.category.#{k}"), k]}, {}, {class: 'form-control'}  %>
 
-      <%= f.label :title, 'タイトル' %>
-      <%= f.text_area :title, rows: "1", cols: "80", class: "form-control", placeholder: "自己メモのタイトル", maxlength: 50	%>
+  <%= f.label :title, 'タイトル' %>
+  <%= f.text_area :title, rows: "1", cols: "80", class: "form-control", placeholder: "自己メモのタイトル", maxlength: 50	%>
 
-      <%= f.label :text, "本文" %>
-      <%= f.text_area :text, rows: "10", cols: "80", class: 'form-control',placeholder:
+  <%= f.label :text, "本文" %>
+  <%= f.text_area :text, rows: "10", cols: "80", class: 'form-control',placeholder:
 "★強み・・・長所や得意なこと 
 ★弱み・・・短所や苦手なこと 
 ★思考の癖・・・物事の捉え方の特徴 例）先々のことを何でも悲観的に考える 
 ★行動の癖・・・繰り返してしまう行動や習慣 例）遅刻をする", maxlength: 500 %>
 
-      <%= f.submit yield(:button_text), class: "btn btn-success" %>
-    <% end %>
+  <%= f.submit yield(:button_text), class: "btn btn-success" %>
+<% end %>

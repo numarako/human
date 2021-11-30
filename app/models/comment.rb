@@ -1,12 +1,13 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :content
+  has_many :notifications, dependent: :destroy
   validates :phrase, presence: true
   validates :user_id, presence: true
   validates :content_id, presence: true
   before_validation :processing_phrase_params
 
-   # phraseに入力漏れがあった場合にエラーを発生させる
+  # phraseに入力漏れがあった場合にエラーを発生させる
   def processing_phrase_params
     if self.phrase == "default_phrase"
       self.phrase = ''
