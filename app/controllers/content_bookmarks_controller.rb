@@ -10,7 +10,7 @@ class ContentBookmarksController < ApplicationController
 
   # お気に入り登録
   def create
-    if @content.user_id != current_user.id   # 投稿者本人以外に限定
+    if !poster?  # 投稿者本人以外に限定
       @content_bookmatrk = ContentBookmark.create(user_id: current_user.id, content_id: @content.id)
       respond_to do |format|
         format.html { redirect_to user }

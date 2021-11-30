@@ -35,7 +35,7 @@ class ContentsController < ApplicationController
     @content = current_user.contents.build(content_params)
     if @content.save
       flash[:success] = "新規投稿が完了しました! ~あなたが幸せでありますように~"
-      redirect_to index_contents_path(current_user)
+      redirect_to contents_path
     else
       render 'new'  
     end
@@ -47,7 +47,7 @@ class ContentsController < ApplicationController
   def update
     if @content.update(content_params)
       flash[:success] = "投稿を更新しました！ ~あなたが幸せでありますように~"
-      redirect_to index_contents_path(current_user)
+      redirect_to contents_path
     else
       render 'edit'
     end
@@ -56,7 +56,7 @@ class ContentsController < ApplicationController
   def destroy
     @content.destroy
     flash[:success] = "投稿を削除しました！"
-    redirect_to index_contents_path(current_user)
+    redirect_to contents_path
   end
 
   private
@@ -70,8 +70,8 @@ class ContentsController < ApplicationController
 
     # 投稿の公開設定を確認
     def check_release_status
-      if @content.status == "private" # 非公開設定に限定
-        if logged_in? && @content.user_id == current_user.id
+      if !public_contents? # 非公開設定に限定
+        if logged_in? && poster?
           # 投稿者本人の場合は閲覧可能
         else
           flash[:danger] = "非公開投稿のため閲覧不可"

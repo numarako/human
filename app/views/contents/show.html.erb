@@ -42,7 +42,7 @@
     </div>
     <% if logged_in? %>
       <% # お気に入りボタンの表示はログインユーザに限定 %>
-      <% if @content.user_id != current_user.id %>
+      <% if !poster? %>
         <% # お気に入りボタンの表示は投稿者以外に限定  %>
         <% if !ContentBookmark.exists?(user: current_user, content_id: @content.id) %>
           <% # お気に入りに登録していない場合は登録ボタンを表示  %>

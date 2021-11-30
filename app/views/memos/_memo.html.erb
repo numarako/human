@@ -1,0 +1,17 @@
+<tr>
+  <td class="td_vertical_align_middle"><%= params[:page]?  i + 1 + (params[:page].to_i - 1)*10 : i + 1 %></td>
+  <td class="td_vertical_align_middle"><%= memo.category_i18n %></td>
+  <td class="td_vertical_align_middle"><%= memo.title %></td>
+  <td class="td_vertical_align_middle"><%= l memo.created_at %></td>
+  <td class="td_vertical_align_middle"><%= l memo.updated_at %></td>
+  <td>
+    <div class="btn-group">
+      <%=link_to(edit_memo_path(memo),　class:"link_to_button") do %>
+      <button type="button" name="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></button>
+      <% end %>
+      <%=link_to(memo_path(memo), method: :delete, data: { confirm: "本当に削除しますか?" }, class:"link_to_button") do %>
+      <button type="button" name="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></button>
+      <% end %>
+    </div>
+　</td>
+</tr>
