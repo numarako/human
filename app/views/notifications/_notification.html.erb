@@ -1,12 +1,15 @@
-<% if notification.content.user_id == notification.visited_id %>
-  <% # 自分が投稿者で、投稿者以外のコメントにより通知を受けるケース %>
-  <%= link_to "あなたの投稿", content_path(notification.content_id) %>にコメントが追加されました。
-<% elsif notification.content.user_id == notification.visitor_id %>
-  <% # 自分が投稿者ではないが、投稿者のコメントにより通知を受けるケース %>
-  <%= link_to "あなたがコメントした投稿", content_path(notification.content_id) %>に投稿者がコメントしました。
-<% else %> 
-  <% # visitor_idとvisited_idが一致するケースは除外済みのため発生しない %>
-<% end %>
+  <% if notification.content.user_id == notification.visited_id %>
+    <% # 自分が投稿者で、投稿者以外のコメントにより通知を受けるケース %>
+    <p class = "notification-text"><%= link_to "あなたの投稿", content_path(notification.content_id) %>にコメントが追加されました</p>
+    <p class = "notification-time"><%= time_ago_in_words(notification.created_at) %>前<br></p>
+  <% elsif notification.content.user_id ==  notification.visitor_id %>
+    <% # 自分が投稿者ではないが、投稿者のコメントにより通知を受けるケース %>
+    <p class = "notification-text"><%= link_to "あなたがコメントした投稿", content_path(notification.content_id) %>に投稿者がコメントしました。</p>
+    <p class = "notification-time"><%= time_ago_in_words(notification.created_at) %>前<br></p>
+  <% else %> 
+    <% # visitor_idとvisited_idが一致するケースは除外済みのため発生しない %>
+  <% end %>
+</p>
 
 
 

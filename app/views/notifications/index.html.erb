@@ -1,11 +1,11 @@
 <% provide(:title, "通知一覧") %>
 <h1>通知一覧</h1>
 <div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
+  <div class="col-sm-4 col-sm-offset-4">
     <% # visitor_idとvisited_idが一致するケースは通知対象外とする %>
     <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>
-      <%= render notifications %>
+      <%= render notifications %> 
     <% else %>
       <h2><%= '通知はありません' %></h2>
     <% end %>
