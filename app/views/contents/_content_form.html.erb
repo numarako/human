@@ -11,7 +11,7 @@
     <%= f.select :emotions, Content.emotions.keys.map {|k| [I18n.t("enums.content.emotions.#{k}"), k]}, {}, {class: 'form-control'} %>
 
     <%= f.label :score, 'スコア' %>
-    <%= f.number_field :score, rows: "1", cols: "10", class: "form-control", placeholder: "負の感情の程度に"1~100"の点数をつけてください, min: 1, max: 100 %>
+    <%= f.number_field :score, rows: "1", cols: "10", class: "form-control", placeholder: "負の感情の程度に1~100の点数をつけてください", min: 1, max: 100 %>
 
     <%= f.label :journaling, 'ジャーナリング' %>
     <%= f.text_area :journaling, rows: "10", cols: "80", class: "form-control", placeholder: "1~3分間集中して、心に浮かんだことをひたすら書き出してください", maxlength: 500 %>

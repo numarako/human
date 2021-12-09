@@ -67,3 +67,29 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        age: 年齢
+        gender: 性別
+        password: パスワード
+      content:
+        title: タイトル
+        emotions: 感情
+        score: スコア
+        journaling: ジャーナリング
+        situation: 状況整理
+        compassion: セルフ・コンパッション
+        status: 公開設定
+      memo:
+        category: 自己メモの種類
+        title: タイトル
+        text: 本文
+      event:
+        mind: ココロ模様
+        reason: 理由
+        small_success: 小さな成功体験
+        small_thanks: 小さな感謝
+        date: 日付
